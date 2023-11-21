@@ -1,7 +1,11 @@
+import json
+
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import FormView, TemplateView, ListView
+
+from sms_service.utility import send_sms
 from .forms import OrderForm, ChargeWalletForm, AddFoodForm
 from .models import Food, Order, Wallet, User
 from django.http import HttpResponse, HttpResponseForbidden
@@ -47,8 +51,8 @@ class ChooseFood(LoginRequiredMixin, FormView):
             entry.save()
             student_wallet.save()
             order = Order.objects.create(student=student, total_amount=food_price)
-            message = {"id": order.id, "food": food_name, "quantity": required_quantity, "status": "successful"}
-            # send_sms(message, student.phone_number)
+            message = f"id: {order.id},\nfood: {food_name.name},\nquantity: {required_quantity},\nstatus: successful"
+            send_sms(message, student.phone_number)
 
         return redirect("order_food:order-detail", order_id=order.id)
 

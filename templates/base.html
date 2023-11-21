@@ -19,18 +19,22 @@
                         <a class="nav-link" href="{% url "order_food:order-food" %}">Order Food</a>
                     </li>
                     {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url "order_food:orders-detail" request.user.id%}">
-                            All orders</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url "order_food:wallet-detail" request.user.id%}">
-                            Wallet detail</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url "order_food:charge-wallet" request.user.id%}">
-                            Charge Wallet</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url "order_food:orders-detail" request.user.id%}">
+                                All orders</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url "order_food:wallet-detail" request.user.id%}">
+                                Wallet detail</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url "order_food:charge-wallet" request.user.id%}">
+                                Charge Wallet</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url "sms_service:send"%}">
+                                Send SMS</a>
+                        </li>
                     {% endif %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url "order_food:create-food"%}">
