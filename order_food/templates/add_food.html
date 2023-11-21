@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% block title %}Order detail{% endblock %}
+{% block content %}
+    <h2>Add a new food here</h2>
+    <form method="post" action="{% url 'order_food:create-food'%}">
+        {% csrf_token %}
+            {{ form|crispy }}
+        <input type="submit" value="Submit">
+    </form>
+{% endblock %}

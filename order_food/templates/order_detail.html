@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% block title %}Order Detail{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Order Details</h2>
+                <ul class="list-group">
+                    {% if order %}
+                        <li class="list-group-item">Order ID: {{ order.id }}</li>
+                        <li class="list-group-item">Student Username: {{ order.student.username }}</li>
+                        <li class="list-group-item">Total Amount: {{ order.total_amount }}</li>
+                        <li class="list-group-item">Created At: {{ order.created_at }}</li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+        <br>
+    </div>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% block title %}Home{% endblock %}
+{% block content %}
+  <div class="container">
+    <div class="jumbotron mt-4">
+      <h1 class="display-4">Welcome, {{ user.username }}!</h1>
+      <p class="lead">Explore the Uni order food app and place your orders easily.</p>
+    </div>
+  </div>
+{% endblock %}
